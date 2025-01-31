@@ -24,6 +24,9 @@ def get_student(id):
  
     return jsonify({"error": "Student not found"}), 404
 
+
+##Exercise1
+
 @app.route('/stats')
 def get_stats():
   
@@ -64,6 +67,73 @@ def get_stats():
 
     
     return jsonify(stats)
+
+##Exercise 2
+
+@app.route('/add/<a>/<b>')
+def add(a, b):
+   
+   
+    num1 = int(a)
+    num2 = int(b)
+    result = num1 + num2
+
+    return jsonify({
+      
+        "a": num1,
+        "b": num2,
+        "result": result
+    })
+
+@app.route('/subtract/<a>/<b>')
+def subtract(a, b):
+    
+    num1 = int(a)
+    num2 = int(b)
+    result = num1 - num2
+
+    return jsonify({
+        
+        "a": num1,
+        "b": num2,
+        "result": result
+    })
+
+@app.route('/multiply/<a>/<b>')
+def multiply(a, b):
+   
+    num1 = int(a)
+    num2 = int(b)
+    result = num1 * num2
+
+    return jsonify({
+       
+        "a": num1,
+        "b": num2,
+        "result": result
+    })
+
+@app.route('/divide/<a>/<b>')
+def divide(a, b):
+    
+
+    num1 = float(a)
+    num2 = float(b)
+
+
+    if num2 == 0:
+        return jsonify({
+            "error": "Cannot divide by zero"
+        }), 400
+
+    result = num1 / num2
+
+    return jsonify({
+       
+        "a": num1,
+        "b": num2,
+        "result": result
+    })
 
 if __name__ == '__main__':
     
